@@ -3,11 +3,14 @@ import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from '@apollo/c
 import { gql } from 'graphql-tag';
 
 import './App.css'
+
+// Create an Apollo Client
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
+  uri: 'http://localhost:4000/graphql', // GraphQL server URL
+  cache: new InMemoryCache(), // In-memory cache for Apollo Client
 });
 
+// Define the GraphQL query to retrieve a book
 const GET_BOOK = gql`
   query GetBook($title: String!) {
     getBook(title: $title) {
@@ -25,6 +28,7 @@ const GET_BOOK = gql`
   }
 `;
 
+// Define a list of book titles for selection
 const bookTitles = [
   { value: "a_color_of_his_own", label: "A Color of His Own" },
   { value: "fishing_in_the_air", label: "Fishing in the Air" },
@@ -34,6 +38,7 @@ function App({ title }) {
   const [currentPages, setCurrentPages] = useState({ leftPage: 0, rightPage: 1 });
   const [currentToken, setCurrentToken] = useState(null);
 
+  // Use Apollo Client's useQuery hook to fetch book data
   const { loading, error, data } = useQuery(GET_BOOK, {
     variables: { title },
   });

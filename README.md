@@ -1,3 +1,4 @@
+[![Terraform Deployment](https://github.com/MwanikiN/full-stack-test-ello/actions/workflows/main.yml/badge.svg)](https://github.com/MwanikiN/full-stack-test-ello/actions/workflows/main.yml)
 # Ello - Full Stack Engineer Coding Challenge
 
 ### About Ello
